@@ -11,6 +11,7 @@ SELECT
     b.penulis,
     b.penerbit,
     b.tahun_terbit,
+    b.jumlah_halaman,
     b.jumlah_buku,
     b.gambar,
     b.sinopsis,

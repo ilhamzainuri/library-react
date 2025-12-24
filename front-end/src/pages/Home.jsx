@@ -258,34 +258,13 @@ function BookCard({ book, onOpen }) {
         <img
           src={`http://localhost/library-react/back-end/uploads/${book.gambar}`}
           alt={book.judul}
-          className="
-            w-full
-            h-full
-            object-contain
-            bg-[#0b0f1a]
-            transition-transform
-            duration-500
-            group-hover:scale-110
-          "
+          className="w-full h-full object-contain bg-[#0b0f1a]"
         />
 
-        {/* OVERLAY INFO */}
-        <div
-          className="
-            absolute inset-0
-            bg-gradient-to-t
-            from-black/90
-            via-black/60
-            to-transparent
-            opacity-0
-            group-hover:opacity-100
-            transition
-            flex
-            flex-col
-            justify-end
-            p-4
-          "
-        >
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-4">
+          
+          {/* SUB KATEGORI */}
           <span className="text-xs text-blue-400 mb-1 truncate">
             {book.nama_subkategori}
           </span>
@@ -294,19 +273,20 @@ function BookCard({ book, onOpen }) {
             {book.judul}
           </h4>
 
-          <p className="text-xs text-gray-300 truncate mb-3">{book.penulis}</p>
+          <p className="text-xs text-gray-300 truncate">
+            {book.penulis}
+          </p>
+
+          {/* JUMLAH HALAMAN */}
+          <p className="text-xs text-gray-400 mt-1">
+            {book.jumlah_halaman
+              ? `${book.jumlah_halaman} halaman`
+              : "Jumlah halaman tidak tersedia"}
+          </p>
 
           <button
             onClick={onOpen}
-            className="
-              bg-blue-600
-              hover:bg-blue-500
-              text-white
-              text-sm
-              py-2
-              rounded-lg
-              transition
-            "
+            className="mt-3 bg-blue-600 hover:bg-blue-500 text-white text-sm py-2 rounded-lg"
           >
             Lihat Detail
           </button>
@@ -315,6 +295,7 @@ function BookCard({ book, onOpen }) {
     </motion.div>
   );
 }
+
 
 /* ================= MODAL ================= */
 
@@ -366,6 +347,7 @@ function BookModal({ book, onClose }) {
               <p>
                 <b>Tahun:</b> {book.tahun_terbit}
               </p>
+              <p><b>Jumlah Halaman:</b> {book.jumlah_halaman || "-"}</p>
               <p>
                 <b>eISBN:</b> {book.eISBN || "-"}
               </p>

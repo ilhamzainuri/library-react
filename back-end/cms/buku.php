@@ -282,7 +282,7 @@ $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
             background: #b92d3a;
         }
 
-     
+
         .btn-cetak {
             background: #198754;
         }
@@ -569,7 +569,8 @@ $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
             JOIN kategori k ON b.kategoriId = k.kategoriId
             JOIN subkategori s ON b.id_subkategori = s.id_subkategori
             JOIN rak r ON b.rakId = r.rakId
-            $whereSQL";
+            $whereSQL
+            ORDER BY b.bukuId DESC";
 
             $result = mysqli_query($koneksi, $sql);
 
