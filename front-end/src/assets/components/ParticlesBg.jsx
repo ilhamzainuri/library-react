@@ -25,7 +25,7 @@ export default function ParticlesBg() {
             },
           },
           color: {
-            value: "#ffffff",
+            value: "#04afffff",
           },
           opacity: {
             value: 0.3,

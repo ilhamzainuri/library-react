@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ParticlesBg from "../assets/components/ParticlesBg";
 import { useSearch } from "../assets/components/SearchContext";
-import libraryBg from "../assets/images/perpus.jpg";
-import aboutImg from "../assets/images/about-library.jpg";
+import libraryBg from "../assets/images/bg1.jpg";
+import aboutImg from "../assets/images/bg2.jpg";
 
 const API_URL = "http://localhost/library-react/back-end";
 

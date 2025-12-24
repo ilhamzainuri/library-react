@@ -53,7 +53,7 @@ export default function NavbarFixed() {
       className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300
         ${
           scrolled
-            ? "bg-gradient-to-r from-blue-600/95 to-indigo-600/95 backdrop-blur shadow-lg"
+            ? "bg-gradient-to-r from-blue-600/20 to-indigo-600/95 backdrop-blur shadow-lg"
             : "bg-transparent"
         }
       `}
@@ -66,7 +66,7 @@ export default function NavbarFixed() {
         >
           <img src={logo} alt="UNIGA" className="h-10 w-10" />
           <span className="text-lg font-bold text-white hidden sm:block">
-            Perpustakaan UNIGA
+            Universitas Gajayana
           </span>
         </div>
 
