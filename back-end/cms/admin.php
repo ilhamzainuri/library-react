@@ -12,7 +12,6 @@ $totalKategori    = mysqli_num_rows(mysqli_query($koneksi, "SELECT kategoriId FR
 $totalSubkategori = mysqli_num_rows(mysqli_query($koneksi, "SELECT id_subkategori FROM subkategori"));
 $totalRak         = mysqli_num_rows(mysqli_query($koneksi, "SELECT rakId FROM rak"));
 $totalAdmin       = mysqli_num_rows(mysqli_query($koneksi, "SELECT userId FROM useracc WHERE role='admin'"));
-$totalGuest       = mysqli_num_rows(mysqli_query($koneksi, "SELECT userId FROM useracc WHERE role='guest'"));
 ?>
 <!DOCTYPE html>
 <html>
@@ -172,11 +171,6 @@ $totalGuest       = mysqli_num_rows(mysqli_query($koneksi, "SELECT userId FROM u
         </div>
 
         <div class="card-stats">
-            <p><i class="bi bi-people"></i> Total User</p>
-            <h3><?= $totalGuest ?></h3>
-        </div>
-
-        <div class="card-stats">
             <p><i class="bi bi-tags"></i> Total Kategori</p>
             <h3><?= $totalKategori ?></h3>
         </div>
@@ -214,13 +208,12 @@ const ctx = document.getElementById('chartData');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Buku', 'Admin', 'User', 'Kategori', 'Subkategori', 'Rak'],
+        labels: ['Buku', 'Admin', 'Kategori', 'Subkategori', 'Rak'],
         datasets: [{
             label: 'Jumlah Data',
             data: [
                 <?= $totalBuku ?>,
                 <?= $totalAdmin ?>,
-                <?= $totalGuest ?>,
                 <?= $totalKategori ?>,
                 <?= $totalSubkategori ?>,
                 <?= $totalRak ?>
