@@ -214,7 +214,7 @@ if (isset($_GET['hapus'])) {
                     <option value="">-- Pilih Role --</option>
 
                     <?php
-                    $roles = ['admin', 'guest'];
+                    $roles = ['admin'];
                     foreach ($roles as $r) {
                         $sel = ($editMode && $editData['role'] == $r) ? 'selected' : '';
                         echo "<option value='$r' $sel>$r</option>";

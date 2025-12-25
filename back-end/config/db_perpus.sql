@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2025 at 01:30 AM
+-- Generation Time: Dec 25, 2025 at 02:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -216,7 +216,7 @@ CREATE TABLE `useracc` (
   `email` text NOT NULL,
   `password` varchar(20) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `role` enum('guest','admin') NOT NULL
+  `role` enum('admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -224,7 +224,8 @@ CREATE TABLE `useracc` (
 --
 
 INSERT INTO `useracc` (`userId`, `name`, `username`, `email`, `password`, `phone`, `role`) VALUES
-(1, 'ilhamzainuri', 'ilhamartar', 'artar010404@gmail.com', 'ilham', '085820664592', 'admin');
+(1, 'ilhamzainuri', 'ilhamartar', 'artar010404@gmail.com', 'ilham', '085820664592', 'admin'),
+(3, 'Muhammad Hafiz Firmansyah', 'hafiz', 'hafizsengkaling@gmail.com', '123', '089513312456', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +297,7 @@ ALTER TABLE `subkategori`
 -- AUTO_INCREMENT for table `useracc`
 --
 ALTER TABLE `useracc`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
