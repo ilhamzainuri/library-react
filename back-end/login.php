@@ -3,25 +3,34 @@ session_start();
 require_once "./config/koneksi.php";
 
 /* ================= CAPTCHA ================= */
-if (!isset($_SESSION['captcha_answer'])) {
+
+function generateCaptcha() {
     $num1 = rand(1, 9);
     $num2 = rand(1, 9);
     $_SESSION['captcha_question'] = "$num1 + $num2";
     $_SESSION['captcha_answer']   = $num1 + $num2;
 }
 
+if (!isset($_SESSION['captcha_answer'])) {
+    generateCaptcha();
+}
+
+
 $error = null;
 
 /* ================= LOGIN ================= */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     $captcha  = trim($_POST['captcha']);
 
-    if ($captcha != $_SESSION['captcha_answer']) {
+    // CAPTCHA SALAH
+    if ($captcha != ($_SESSION['captcha_answer'] ?? null)) {
         $error = "Captcha salah. Silakan coba lagi.";
+        generateCaptcha();
+
     } else {
-        unset($_SESSION['captcha_answer'], $_SESSION['captcha_question']);
 
         $stmt = $conn->prepare(
             "SELECT * FROM useracc WHERE username=? AND password=? LIMIT 1"
@@ -31,7 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
+        // LOGIN BERHASIL
         if ($user) {
+
+            unset($_SESSION['captcha_answer'], $_SESSION['captcha_question']);
+
             $_SESSION['userId']    = $user['id_user'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role']     = $user['role'];
@@ -40,11 +53,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ? "./cms/admin.php"
                 : "./index.php"));
             exit;
-        } else {
+
+        } 
+        // USERNAME / PASSWORD SALAH
+        else {
             $error = "Username atau password salah.";
+            generateCaptcha(); 
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -174,7 +192,8 @@ a:hover {
     <div class="mb-4">
       <label class="form-label">
         <i class="bi bi-patch-question-fill"></i>
-        <?= $_SESSION['captcha_question']; ?> =
+        <?= $_SESSION['captcha_question'] ?? 'Captcha error'; ?> =
+
       </label>
       <div class="input-group">
         <span class="input-group-text">
