@@ -1,7 +1,7 @@
 <?php
 $host     = "localhost";
-$user     = "root";
-$password = "";
+$user     = "admin";
+$password = "Zoid0104";
 $database = "db_perpus";
 
 

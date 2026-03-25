@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# 1. Pastikan folder back-end dan folder images/uploads bisa diakses langsung
+RewriteCond %{REQUEST_URI} ^/back-end [NC,OR]
+RewriteCond %{REQUEST_URI} ^/uploads [NC]
+RewriteRule ^ - [L]
+
+# 2. Redirect semua request lainnya ke index.html (React Router)
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
