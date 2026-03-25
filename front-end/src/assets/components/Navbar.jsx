@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSearch } from "./SearchContext";
 import logo from "../images/LOGO.png";
 
-const API_URL = "http://localhost/library-react/back-end";
+const API_URL = "https://ilhamlatihan.my.id/back-end";
 
 export default function NavbarFixed() {
   const [mobileOpen, setMobileOpen] = useState(false);
