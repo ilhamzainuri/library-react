@@ -149,7 +149,7 @@ export default function NavbarFixed() {
             <button
   onClick={() =>
     window.location.href =
-      "http://localhost/library-react/back-end/login.php"
+      "https://ilhamlatihan.my.id/back-end/login.php"
   }
   className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-1.5 rounded-full font-bold"
 >
