@@ -6,7 +6,10 @@ import { useSearch } from "../assets/components/SearchContext";
 import libraryBg from "../assets/images/bg1.jpg";
 import aboutImg from "../assets/images/bg2.jpg";
 
-const API_URL = "http://localhost/library-react/back-end";
+// Deteksi apakah sedang berjalan di lokal atau di server Hostinger
+const API_URL = window.location.hostname === "localhost" 
+  ? "http://localhost/library-react/back-end" 
+  : "https://ilhamlatihan.my.id/back-end";
 
 /* ================= HOME ================= */
 
@@ -256,7 +259,7 @@ function BookCard({ book, onOpen }) {
       <div className="group relative w-full h-full rounded-2xl overflow-hidden bg-black shadow-xl">
         {/* COVER */}
         <img
-          src={`http://localhost/library-react/back-end/uploads/${book.gambar}`}
+          src={`${API_URL}/uploads/${book.gambar}`}
           alt={book.judul}
           className="w-full h-full object-contain bg-[#0b0f1a]"
         />
@@ -323,7 +326,7 @@ function BookModal({ book, onClose }) {
         <div className="grid md:grid-cols-2 gap-6 p-6 max-h-[90vh] overflow-y-auto">
           {/* IMAGE */}
           <img
-            src={`http://localhost/library-react/back-end/uploads/${book.gambar}`}
+            src={`${API_URL}/uploads/${book.gambar}`}
             alt={book.judul}
             className="w-full h-[420px] object-cover rounded-xl"
           />
