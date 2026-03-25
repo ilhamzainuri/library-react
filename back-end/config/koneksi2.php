@@ -1,8 +1,8 @@
 <?php
 $host     = "localhost";
-$user     = "admin";
+$user     = "u831910518_admin";
 $password = "Zoid0104";
-$database = "db_perpus";
+$database = "u831910518_db_perpus";
 
 
 $koneksi = new mysqli($host, $user, $password, $database);

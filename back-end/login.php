@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['role']     = $user['role'];
 
             header("Location: " . ($user['role'] === 'admin'
-                ? "./cms/admin.php"
-                : "./index.php"));
+                ? "cms/admin.php"
+                : "index.php"));
             exit;
 
         } 
